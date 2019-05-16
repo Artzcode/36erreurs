@@ -3,21 +3,24 @@ namespace ThirtySix;
 
 class Connexion{
 
-  private static $_instance = null;
+    private static $_instance = null;
 
-  private function __construct(){
-  
-  }
+    private function __construct(){
 
-  public static function getInstance(){
-    if(is_null(self::$_instance)){
-      $config = require_once(realpath(dirname(__FILE__))."/../../config/dbconfig.php");
-      self::$_instance = new \PDO($config['host'], 
-                 $config['user'], 
-                 $config['password']);
     }
 
-    return self::$_instance;
-  }
-  
+    public static function getInstance()
+    {
+        if(is_null(self::$_instance))
+        {
+            $config = require_once(realpath(dirname(__FILE__))."/../../config/dbconfig.php");
+
+            self::$_instance = new \PDO($config['host'], 
+               $config['user'], 
+               $config['password']);
+        }
+
+        return self::$_instance;
+    }
+
 }
